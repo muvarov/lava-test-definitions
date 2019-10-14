@@ -1,0 +1,11 @@
+metadata:
+  name: tpm2-test
+  format: "Lava-Test-Shell Test Definition 1.0"
+  description: "TPM integration test from 3.x branche"
+  version: 1.0
+
+run:
+    steps:
+        - git clone https://github.com/tpm2-software/tpm2-tools -b 3.X
+        - cd ./tpm2-tools/test/system
+        - ./test.sh
