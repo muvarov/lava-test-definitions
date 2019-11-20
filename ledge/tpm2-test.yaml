@@ -6,6 +6,6 @@ metadata:
 
 run:
     steps:
-        - git clone https://github.com/tpm2-software/tpm2-tools -b 3.1.2
-        - cd ./tpm2-tools/test/system
-        - ./test.sh -p
+        - git clone https://github.com/tpm2-software/tpm2-tools -b 3.X
+        - git checkout -b thud 3.1.2
+        - ./ledge/tpm2-test.sh
