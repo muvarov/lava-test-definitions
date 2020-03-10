@@ -7,5 +7,5 @@ metadata:
 run:
     steps:
         - git clone https://github.com/tpm2-software/tpm2-tools -b 3.X
-        - git checkout -b thud 5e2f1aafc58e60c5050f85147a14914561f28ad9
+        - cd tpm2-tools; git checkout -b thud 5e2f1aafc58e60c5050f85147a14914561f28ad9; cd ..
         - ./ledge/tpm2-test.sh
