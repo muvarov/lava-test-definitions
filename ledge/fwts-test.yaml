@@ -1,0 +1,9 @@
+metadata:
+  name: fwts-test
+  format: "Lava-Test-Shell Test Definition 1.0"
+  description: "Firmware fwts test"
+  version: 1.0
+
+run:
+    steps:
+        - fwts
