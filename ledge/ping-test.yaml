@@ -1,0 +1,10 @@
+metadata:
+  name: ping-test
+  format: "Lava-Test-Shell Test Definition 1.0"
+  description: "Simple ping test"
+  version: 1.0
+
+run:
+    steps:
+        - lava-test-case /sbin/ifconfig -a
+        - lava-test-case ping -c 5 8.8.8.8
