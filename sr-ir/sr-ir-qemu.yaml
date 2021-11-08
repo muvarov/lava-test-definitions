@@ -1,0 +1,39 @@
+device_type: qemu
+job_name: QEMU SR-IR aarch64
+timeouts:
+  job:
+    minutes: 1200
+  action:
+    minutes: 1200
+  connection:
+    minutes: 2
+visibility: public
+context:
+  arch: arm64
+  machine: virt,gic-version=3
+  cpu: cortex-a72
+  guestfs_interface: virtio
+  netdevice: user
+actions:
+- deploy:
+    namespace: target
+    timeout:
+      minutes: 15
+    to: tmpfs
+    images:
+      acs:
+        image_arg: -drive id=disk0,file={acs},if=none,format=raw -device virtio-blk-device,drive=disk0
+          -nographic -nographic -no-acpi -m 4G -smp 2
+        url: https://people.linaro.org/~ilias.apalodimas/qemu/debian/ir_acs_live_image.img
+      firmware:
+        image_arg: -bios {firmware}
+        url: https://people.linaro.org/~ilias.apalodimas/qemu/debian/u-boot.bin
+    os: oe
+- boot:
+    namespace: target
+    timeout:
+      minutes: 1200
+    method: qemu
+    media: tmpfs
+    prompts:
+      - '# ~'

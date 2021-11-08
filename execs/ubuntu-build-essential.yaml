@@ -1,0 +1,44 @@
+metadata:
+  name: ubuntu-build-essential
+  format: "Lava-Test-Shell Test Definition 1.0"
+  description: "Install basic packages for ubuntu 17.10"
+  version: 1.0
+
+params:
+    BUILD_DIR: /root
+    INSTALL_DIR: /root/install
+
+install:
+    deps:
+        - autotools-dev
+        - autoconf
+        - autogen
+        - libtool
+        - gcc
+        - g++
+        - libssl-dev
+        - libcunit1
+        - libcunit1-dev
+        - libconfig-dev
+        - locales-all
+        - make
+        - m4
+        - pkg-config
+        - uuid
+        - uuid-runtime
+        - libnuma-dev 
+        - libnuma1 
+        - pkg-config 
+        - python 
+        - pciutils
+        - git
+        - ethtool
+        - sudo
+        - bison
+        - flex
+        - libpcap-dev
+        - lsb-release
+        - net-tools
+        - tcpdump
+        - wget
+        - qemu-system-arm

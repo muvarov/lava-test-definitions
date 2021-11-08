@@ -1,0 +1,68 @@
+job_name: SR-IR x86_64
+
+timeouts:
+    job:
+        minutes: 1200
+    action:
+        minutes: 1200
+    connection:
+        minutes: 20
+
+visibility: public
+priority: medium
+device_type: x86
+
+actions:
+- deploy:
+     role:
+         - target
+     timeout:
+         minutes: 10
+     to: tftp
+     kernel:
+         url: http://people.linaro.org/~ilias.apalodimas/images/ubuntu-21.04/vmlinuz-5.11.0-37-generic
+     nfsrootfs:
+         url: http://people.linaro.org/~ilias.apalodimas/images/ubuntu-21.04/binary.tar.bz2
+         prefix: binary/
+         compression: bz2
+     ramdisk:
+         url: http://people.linaro.org/~ilias.apalodimas/images/ubuntu-21.04/initrd.img.gz
+         compression: gz
+     os: debian
+
+- boot:
+    role:
+        - target
+    timeout:
+        minutes: 45
+    method: ipxe
+    commands: nfs
+    parameters:
+        shutdown-message: "reboot: Restarting system"
+    auto_login:
+        login_prompt: 'login:'
+        username: linaro
+        password_prompt: 'Password:'
+        password: linaro
+        login_commands:
+          - sudo su -
+    prompts:
+        - root@(.*)
+        - linaro@(.*)
+
+- test:
+    role:
+        - target
+    timeout:
+        minutes: 1200
+
+    definitions:
+        - repository: https://git.linaro.org/ledge/lava-test-definitions.git
+          from: git
+          path: execs/ubuntu-build-essential.yaml 
+          name: deps
+
+        - repository: https://git.linaro.org/ledge/lava-test-definitions.git
+          from: git
+          path: execs/sr-ir.yaml
+          name: sr-ir

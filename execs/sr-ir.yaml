@@ -1,0 +1,19 @@
+metadata:
+  name: SR-IR
+  format: "Lava-Test-Shell Test Definition 1.0"
+  description: "Run SystemReady-IR"
+  version: 1.0
+
+
+install:
+    deps:
+        - util-linux
+        - tmux
+        - python3
+        - python3-yaml
+        - python3-packaging
+
+run:
+    steps:
+        - echo "QEMU SystemReady-IR"
+        - ./scripts/sr-ir.sh
