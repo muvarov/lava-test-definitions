@@ -14,6 +14,9 @@ log="$log_file_part"'.log'
 VARIABLES="{$VARIABLES:-https://people.linaro.org/~ilias.apalodimas/images/ubuntu-21.04/variables.img}"
 UBOOT="{$UBOOT:-https://people.linaro.org/~ilias.apalodimas/qemu/debian/u-boot.bin}"
 
+echo "UBOOT: ${UBOOT}"
+echo "VARIABLES: ${VARIABLES}"
+
 wget "$acs_url"
 wget ${VARIABLES}
 wget ${UBOOT}
