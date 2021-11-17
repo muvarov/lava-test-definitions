@@ -4,7 +4,7 @@
 # urls
 acs_img='ir_acs_live_image.img'
 acs_url='https://people.linaro.org/~ilias.apalodimas/qemu/debian/'"$acs_img"
-post_url='https://archive.validation.linaro.org/artifacts/team/systemready/'
+post_url='https://archive.validation.linaro.org/artifacts/team/ledge/systemready/uboot/${BUILD_NUMBER}/${MACHINE}/'
 
 # final log files
 log_file_part='/media/acs_results/sct_results/Overall/Summary'
@@ -14,6 +14,7 @@ log="$log_file_part"'.log'
 VARIABLES="${VARIABLES:=https://people.linaro.org/~ilias.apalodimas/images/ubuntu-21.04/variables.img}"
 UBOOT="${UBOOT:=https://people.linaro.org/~ilias.apalodimas/qemu/debian/u-boot.bin}"
 
+echo "BUILD_NUMBER: ${BUILD_NUMBER}, MACHINE: ${MACHINE}"
 echo "UBOOT: ${UBOOT}"
 echo "VARIABLES: ${VARIABLES}"
 
