@@ -70,8 +70,8 @@ lava_test_dir="$(find /lava-* -maxdepth 0 -type d | grep -E '^/lava-[0-9]+' 2>/d
 [ -n "$lava_test_dir" ] && . $lava_test_dir/secrets
 
 # store files
-ekl=$(curl -F "path=@$ekl" -F "token=$API_KEY" "$post_url")
-log=$(curl -F "path=@$log" -F "token=$API_KEY" "$post_url")
+ekl=$(curl -F "path=@$ekl" -F "token=$ARTIFACTORIAL_TOKEN" "$post_url")
+log=$(curl -F "path=@$log" -F "token=$ARTIFACTORIAL_TOKEN" "$post_url")
 final_dir=$(echo $ekl | awk 'BEGIN{FS=OFS="/"}NF--')
 final_dir="$final_dir"'/'
 
