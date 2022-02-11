@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 . scripts/lava-common.sh
 
 # urls
