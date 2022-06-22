@@ -42,3 +42,6 @@ install:
         - tcpdump
         - wget
         - qemu-system-arm
+        - ninja-build
+        - libglib2.0-dev
+        - libpixman-1-dev
