@@ -20,6 +20,13 @@ wget https://people.linaro.org/~maxim.uvarov/ubuntu-seed.iso
 wget https://cdimage.ubuntu.com/releases/22.04/release/ubuntu-22.04-live-server-arm64.iso
 
 truncate -s 6G empty_disk.raw
+
+pip3 install pathlib pycdlib
+wget https://raw.githubusercontent.com/muvarov/lava-test-definitions/master/scripts/addautoinstall.py
+python3 ./addautoinstall.py -i ubuntu-22.04-live-server-arm64.iso -o ubuntu-22.04-live-server-arm64.iso-auto.iso
+mv ubuntu-22.04-live-server-arm64.iso-auto.iso ubuntu-22.04-live-server-arm64.iso
+
+
 qemu-system-aarch64 -m 2G -smp 2 -nographic -cpu cortex-a57 -machine virt,secure=on \
     -drive if=pflash,unit=0,readonly=off,file=ts-firmware-qemu-nonsecure.bin,format=raw \
     -drive id=p2os,if=none,file=empty_disk.raw,format=raw -device virtio-blk-device,drive=p2os \
