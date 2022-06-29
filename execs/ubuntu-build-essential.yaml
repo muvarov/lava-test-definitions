@@ -45,3 +45,4 @@ install:
         - ninja-build
         - libglib2.0-dev
         - libpixman-1-dev
+        - expect

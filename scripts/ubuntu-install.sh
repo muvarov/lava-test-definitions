@@ -27,7 +27,7 @@ python3 ./addautoinstall.py -i ubuntu-22.04-live-server-arm64.iso -o ubuntu-22.0
 mv ubuntu-22.04-live-server-arm64.iso-auto.iso ubuntu-22.04-live-server-arm64.iso
 
 
-qemu-system-aarch64 -m 2G -smp 2 -nographic -cpu cortex-a57 -machine virt,secure=on \
+qemu-system-aarch64 -m 2G -smp 8 -nographic -cpu cortex-a57 -machine virt,secure=on \
     -drive if=pflash,unit=0,readonly=off,file=ts-firmware-qemu-nonsecure.bin,format=raw \
     -drive id=p2os,if=none,file=empty_disk.raw,format=raw -device virtio-blk-device,drive=p2os \
     -nographic -net nic,model=virtio,macaddr=DE:AD:BE:EF:36:02 -net user \
